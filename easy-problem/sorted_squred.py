@@ -17,6 +17,7 @@ def sortedSqured(arr):
 
 
 # Broth Froce with time complextiy O(nlogn)
+
 def sortedSqured(arr):
     arr = [i*i for i in arr]  # It toke n time and space complexity
     arr.sort()  # nlogn time and space complexity
