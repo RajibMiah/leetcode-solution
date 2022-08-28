@@ -1,7 +1,4 @@
 
-from ast import Or
-
-
 def monotonicArray(num):
     isAscending = isDecending = True
     for i in range(0, len(num) - 1):
