@@ -1,7 +1,29 @@
+def reverse(arr, start, end):
+    end -= 1
+    while(start < end):
+        temp = arr[start]
+        arr[start] = arr[end]
+        arr[end] = temp
+        start += 1
+        end -= 1
+
+
+# optimaized space complexity with removing oxilarry space
 
 
 def rotate(arr, step):
-    if len(arr) < 0:
+    if len(arr) <= 0:
+        return []
+    k = step % len(arr)
+    reverse(arr, 0, len(arr))
+    reverse(arr, 0, k-1)
+    reverse(arr, k, len(arr))
+    return arr
+# Brute Force solution
+
+
+def _rotate(arr, step):
+    if len(arr) <= 0:
         return []
     k = step % len(arr)
     temp = arr[len(arr) - k: len(arr)]
