@@ -1,5 +1,5 @@
 
-# time complexity O(N) and time complexity O(1)
+# time complexity O(N) and space complexity O(1)
 def maxArea(height):
     areaLength = len(height)
     i = 0
@@ -14,10 +14,9 @@ def maxArea(height):
             j -= 1
     return max_area
 
+
 # Bruth Force approach /checking every possibility .
 # the time complexity of this algorithm is O(N^2) and space complexity O(1)
-
-
 def _maxArea(height):
     areaLength = len(height)
     i = 0
