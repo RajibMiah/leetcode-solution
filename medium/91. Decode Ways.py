@@ -1,21 +1,24 @@
 
 
-def dfs(s, dp, i, result):
-    if i in dp:
-        return dp[i]
-    if s[i] == 0:
-        return s[i]
-    result = dfs(s, dp, i+1, result)
-    if i + 1 < len(s) and (s[i] == "1" or s[i] == '2' or s[i + 1] in "123456"):
-        result += dfs(s, dp, i+2, result)
-    return result
-
-
 def numDecodings(s):
     dp = {len(s): 1}
-    result = 0
-    value = dfs(s, dp, 0, result)
-    return value
+
+    def dfs(i):
+        if i >= len(s):
+            return 1
+        if i in dp:
+            return dp[i]
+        if s[i] == "0":
+            return 0
+        result = dfs(i+1)
+        if i + 1 < len(s) and (s[i] == '1' or s[i] == '2' and s[i+1] in '0123456'):
+            result += dfs(i+2)
+            dp[i] = result
+        return result
+    return dfs(0)
 
 
-print(numDecodings([121]))
+print(numDecodings("12"))
+print(numDecodings("226"))
+print(numDecodings("06"))
+print(numDecodings("1201234"))
