@@ -1,15 +1,15 @@
-def reverse(s):
-    string_s = ''
-    i = len(s)-1
-    j = 0
-    while(i >= 0):
-        if s[i] not in '-+0':
-            string_s += s[i]
-            j += 1
-        i -= 1
+# time complexity O(N)
+def reverse(x):
+    result = 0
+    sign = [1, -1][x < 0]
+    while(x != 0):
+        reminder = abs(x) % 10
+        new_result = result * 10 + reminder
+        x = abs(x) // 10
+        result = new_result
+    return (sign * result) if result.bit_length() < 32 else 0
 
-    return string_s
 
-
-print(reverse("-1230"))
-print(reverse("120))
+print(reverse(-123))
+print(reverse(120))
+print(reverse(-1534236469))  # expected outpu 0
