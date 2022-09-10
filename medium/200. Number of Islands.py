@@ -1,3 +1,4 @@
+# Time complexity O(N) and space complexity O(1) ignore recursive stack space
 def numIslands(grid):
     if not grid:
         return 0
