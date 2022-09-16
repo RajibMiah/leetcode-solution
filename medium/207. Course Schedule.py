@@ -1,4 +1,4 @@
-def canFinish(self, numCourses, prerequisites):
+def canFinish(numCourses, prerequisites):
     """
     :type numCourses: int
     :type prerequisites: List[List[int]]
@@ -15,6 +15,7 @@ def canFinish(self, numCourses, prerequisites):
 
         if node in visitSet:
             return False
+
         if mapPre[node] == []:
             return True
         visitSet.add(node)
