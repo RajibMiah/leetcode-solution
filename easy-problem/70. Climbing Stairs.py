@@ -14,9 +14,5 @@ class Solution(object):
         return memo[n]
 
     def climbStairs(self, n):
-        """
-        :type n: int
-        :rtype: int
-        """
         memo = [0] * (n + 1)
         return self.dfs(n, memo)
