@@ -3,7 +3,7 @@ def pacificAtlantic(heights):
     pacific, atlantic = set(), set()
 
     def dfs(r, c, visit, preHeight):
-        if ((r, c) in visit or r < 0 or c < 0 or r == rows or c == cols or heights[r][c] < preHeight):
+        if ((r, c) in visit or r < 0 or c < 0 or r == rows or c == cols or heights[r][c] <= preHeight):
             return
         visit.add((r, c))
         dfs(r + 1, c, visit, heights[r][c])
@@ -18,6 +18,7 @@ def pacificAtlantic(heights):
     for r in range(rows):
         dfs(r, 0, pacific, heights[r][0])
         dfs(r, cols - 1, atlantic, heights[r][cols - 1])
+
     result = []
     for r in range(rows):
         for c in range(cols):
