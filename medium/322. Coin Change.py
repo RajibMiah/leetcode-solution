@@ -19,7 +19,7 @@ def coinChange(coins, amount, dp=[]):
 def _coinChange(coins, amount, dp=[]):
     dp = [math.inf + 1] * (amount + 1)
     dp[0] = 0
-    # coins.sort()
+    coins.sort()
     for m in range(1, amount + 1):
         for c in coins:
             if m >= c:
