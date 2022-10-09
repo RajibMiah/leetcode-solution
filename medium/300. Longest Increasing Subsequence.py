@@ -22,4 +22,5 @@ def lengthOfLIS(self, nums):
 
         return max(left, right)
 
+
     return dfs(-1, 0, nums, dp)
