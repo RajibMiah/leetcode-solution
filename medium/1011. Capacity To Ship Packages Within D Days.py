@@ -17,15 +17,27 @@ def shipWithinDays(weights, days):
     for weight in weights:
         high += weight
 
-    while(low < high):
+    def binarySearch(low, high):
 
-        mid = (low + high) // 2
+        if low > high:
+            return low
 
-        if canShip(mid):
-            high = mid
+        mid = low + (high - low) // 2
+
+        if(canShip(mid)):
+            return binarySearch(low, mid - 1)
         else:
-            low = mid + 1
-    return low
+            return binarySearch(mid + 1, high)
+
+    # while(low < high):
+
+    #     mid = (low + high) // 2
+
+    #     if canShip(mid):
+    #         high = mid
+    #     else:
+    #         low = mid + 1
+    return binarySearch(low, high)
 
 
 print(shipWithinDays([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 5))  # Output: 15
