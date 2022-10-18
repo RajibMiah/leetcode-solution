@@ -1,4 +1,29 @@
-def lengthOfLIS(self, nums):
+"""
+Using binary search algorithm Time complxity of O(nlogn) and space O(N)
+"""
+import bisect
+
+
+def lengthOfLIS(nums):
+    result = [nums[0]]
+
+    for i in range(1, len(nums)):
+        if result[-1] < nums[i]:
+            result.append(nums[i])
+        else:
+            index = bisect.bisect_left(result, nums[i])
+            result[index] = nums[i]
+
+    return len(result)
+
+
+print(lengthOfLIS([10, 9, 2, 5, 3, 7, 101, 18]))  # output 4
+"""
+using dp
+"""
+
+
+def _lengthOfLIS(self, nums):
     """
     :type nums: List[int]
     :rtype: int
@@ -21,6 +46,5 @@ def lengthOfLIS(self, nums):
             dp[prev][current] = max(left, right)
 
         return max(left, right)
-
 
     return dfs(-1, 0, nums, dp)
