@@ -29,3 +29,31 @@ def divide(dividend, divisor):
 
 
 print(divide(10, 3))  # output 3
+
+
+"""
+approch two using bit manupulation 
+"""
+
+
+def divide(dividend, divisor):
+
+    if (dividend == 1 << 31 and divisor == -1):
+        return sys.maxsize
+
+    sign = True if (dividend >= 0) == (divisor >= 0) else False
+
+    dividend = abs(dividend)
+    divisor = abs(divisor)
+    result = 0
+    while(dividend - divisor >= 0):
+        count = 0
+        while(dividend - (divisor << 1 << count) > 0):
+            count += 1
+
+        result += 1 << count
+        dividend -= divisor << count
+    return result if sign else -result
+
+
+print(divide(10, 3))
